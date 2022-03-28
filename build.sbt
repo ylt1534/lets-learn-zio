@@ -9,5 +9,7 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "lets-learn-zio",
+    libraryDependencies += "dev.zio" %% "zio-streams" % "1.0.13",
+    libraryDependencies += "dev.zio" %% "zio" % "1.0.13"
   )
 

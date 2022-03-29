@@ -7,8 +7,9 @@ import zio.console._
 import zio.duration.durationInt
 
 import java.io.IOException
+import java.util.Random
 import scala.annotation.tailrec
-import scala.util.Try
+import scala.util.{Random, Try}
 
 case class User(name: String, teamId: String)
 
@@ -17,11 +18,17 @@ case class Team(name: String)
 object Hello extends zio.App {
   override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] = x.exitCode
 
-  val x: ZIO[Console with Clock, IOException, String] = {
+  def makeRequest: Task[Int] = Task.effect {
+    val x = scala.util.Random.nextInt(10)
+    println(x)
+    x
+  }
+
+  val x = {
     for {
-      name <- getStrLn.repeat(
-        Schedule.recurUntil[String](y => Try(y == "hello").getOrElse(false))
-          .zipLeft(Schedule.exponential(2.seconds) && Schedule.recurs(3))
+      name <- makeRequest.repeat(
+        Schedule.recurUntil[Int](y => Try(y > 7).getOrElse(false))
+          .zipLeft(Schedule.exponential(1.seconds) && Schedule.recurs(3))
       )
       _ <- putStrLn(s"the word you inputted is: $name")
     } yield name

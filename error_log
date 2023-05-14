@@ -1,0 +1,5 @@
+[Sun Mar  7 16:02:00 2004] [notice] Apache/1.3.29 (Unix) configured -- resuming normal operations
+[Sun Mar  7 16:02:00 2004] [notice] Apache/1.3.29 (Unix) configured -- resuming normal operations
+[Sun Mar  7 16:02:00 2004] [notice] Apache/1.3.29 (Unix) configured -- resuming normal operations
+[Sun Mar  7 21:16:17 2004] [error] [client 24.70.56.49] File does not exist: /home/httpd/twiki/view/Main/WebHome
+[Sun Mar  7 21:16:17 2004] [error] [client 24.70.56.49] XXXUU: /home/httpd/twiki/view/Main/WebHome
